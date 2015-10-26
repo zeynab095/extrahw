@@ -77,11 +77,11 @@ function swap(ind1, ind2) {
 function elementSwap(el1, el2) {
     var temp;
     if (el1.prev().length > 0) {
-        tmp = el1.prev();
+        temp = el1.prev();
         el1.insertBefore(el2);
         el2.insertAfter(temp);
     } else {
-        tmp = el1.next();
+        temp = el1.next();
         el1.insertBefore(el2);
         el2.insertBefore(temp);
     }
