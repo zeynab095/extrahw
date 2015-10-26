@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selection Sort</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
+
+</head>
+
+
+
+<body>
+
+  <button onclick="func()">Selection Sort</button>
+  <button onclick="func1()">Bubble Sort</button>
+  <button onclick="location.reload()" id="restart">restart</buttom>
+   <div id="div"></div>
+</body>
+
+<script>
+ var arr = [4, 7, 1, 9, 18, 13, 6, 11];
+ var arr1=[4, 7, 1, 9, 18, 13, 6, 11];
+var counter = 0;
+
+function showarray(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        var divSort = document.createElement("div");
+        divSort.style.width = 30 + "px";
+        divSort.style.height = 30 + "px";
+        divSort.style.background = "yellow";
+        divSort.style.display = "inline-block";
+        divSort.style.margin = "10px";
+        divSort.id = arr[i];
+        divSort.innerHTML = arr[i];
+        document.getElementById("div").appendChild(divSort);
+    }
+}
+showarray(arr);
+
+function func() {
+    for (var j = 0; j < arr.length - 1; j++) {
+        var min = j;
+        for (var i = j + 1; i < (arr.length); i++) {
+            if (arr[min] > arr[i]) {
+                min = i;
+            }
+        }
+        if (min !== j) swap(min, j);
+
+    }
+}
+
+
+
+
+
+function func1() {
+  for (var j = arr.length; j > 0; j--) {
+    for (var i = 0; i < (arr.length-1); i++) {
+      if (arr[i] > arr[i + 1]) {
+        swap(i+1, i);
+      }
+    };
+  }
+}
+
+function swap(ind1, ind2) {
+    var valueOne = arr[ind1];
+    var valueTwo = arr[ind2];
+    arr[ind2] = valueOne;
+    arr[ind1] = valueTwo;
+
+    setTimeout(function () {
+        elementSwap($('#' + valueOne), $('#' + valueTwo));
+    }, ++counter * 1000);
+}
+
+function elementSwap(el1, el2) {
+    var temp;
+    if (el1.prev().length > 0) {
+        tmp = el1.prev();
+        el1.insertBefore(el2);
+        el2.insertAfter(temp);
+    } else {
+        tmp = el1.next();
+        el1.insertBefore(el2);
+        el2.insertBefore(temp);
+    }
+}
+</script>
+</html>
+
